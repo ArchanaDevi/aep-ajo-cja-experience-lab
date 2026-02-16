@@ -1,87 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AEP AJO Experience Lab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience Commerce Lab</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    /* Big Hero Banner */
-    .hero {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-    }
+body {
+  background-color: #f5f7fa;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
-    .hero p {
-      font-size: 20px;
-      opacity: 0.9;
-    }
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
 
-    .login-btn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #ff6b35;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
 
-    .login-btn:hover {
-      background-color: #ff4500;
-    }
+.btn {
+  padding: 8px 18px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-    /* Small Banner */
-    .small-banner {
-      background-color: white;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin: -40px auto 40px auto;
-      width: 80%;
-      border-radius: 10px;
-    }
+.login {
+  background-color: transparent;
+  border: 1px solid #333;
+}
 
-    .small-banner h2 {
-      margin-bottom: 10px;
-      color: #333;
-    }
+.signup {
+  background-color: #ff6b35;
+  color: white;
+}
 
-    .small-banner p {
-      color: #666;
-    }
-  </style>
+/* HERO BANNER */
+.hero {
+  height: 400px;
+  background: linear-gradient(to right, #1f4037, #99f2c8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+/* SMALL BANNERS */
+.banner-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 20px;
+}
+
+.small-banner {
+  flex: 1;
+  background-color: white;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.small-banner:hover {
+  transform: translateY(-5px);
+}
+</style>
 </head>
 
 <body>
 
-  <!-- BIG HERO BANNER -->
-  <div class="hero">
-    <h1>Experience Intelligence Lab 🚀</h1>
-    <p>Adobe AEP & AJO Sandbox for Real-Time Personalization</p>
-    <button class="login-btn" onclick="alert('Login Clicked!')">Login</button>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">Experience Commerce</div>
+  <div class="nav-buttons">
+    <button class="btn login" onclick="alert('Login Clicked')">Login</button>
+    <button class="btn signup" onclick="alert('Sign Up Clicked')">Sign Up</button>
   </div>
+</div>
 
-  <!-- SMALL BANNER -->
-  <div class="small-banner">
-    <h2>Real-Time Decisioning Sandbox</h2>
-    <p>Testing Edge Network, Offer Decisioning, Code-Based Campaigns & Personalization.</p>
+<!-- HERO BANNER -->
+<div class="hero">
+  <div>
+    <h1>Welcome to the Experience Lab 🚀</h1>
+    <p>Personalized commerce powered by Adobe AEP & AJO</p>
   </div>
+</div>
+
+<!-- 4 SMALL BANNERS -->
+<div class="banner-container">
+  <div class="small-banner">Electronics</div>
+  <div class="small-banner">Fashion</div>
+  <div class="small-banner">Home & Living</div>
+  <div class="small-banner">Special Offers</div>
+</div>
 
 </body>
 </html>
