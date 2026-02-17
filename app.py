@@ -55,7 +55,7 @@ def index():
     return render_template("index.html")
 
 # Login Page (renders the industry-standard login.html you shared)
-@app.route("/login")
+@app.route("/templates/login")
 def login_page():
     # If already logged in, go straight to success page
     if "user" in session:
