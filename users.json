@@ -1,0 +1,17 @@
+{
+  "admin@demo.com": {
+    "password": "1234",
+    "first_name": "Admin",
+    "last_name": "User"
+  },
+  "jwala@demo.com": {
+    "password": "abcd",
+    "first_name": "Jwala",
+    "last_name": "Gurram"
+  },
+  "ad@demo.com": {
+    "password": "1234",
+    "first_name": "Archana",
+    "last_name": "Thumati"
+  }
+}
