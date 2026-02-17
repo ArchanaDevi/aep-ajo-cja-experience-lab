@@ -1,14 +1,332 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Login</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in | Store</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --primary:#111827;
+      --primaryText:#ffffff;
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% 10%, #e9efff 0%, transparent 60%),
+                  radial-gradient(900px 500px at 90% 30%, #eafaf2 0%, transparent 55%),
+                  var(--bg);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 24px;
+    }
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .mark{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg, #111827, #4b5563);
+      display:inline-block;
+    }
+    .header-links a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:16px;
+      font-size:14px;
+    }
+    .header-links a:hover{color:var(--text)}
+
+    /* Layout */
+    main{
+      flex:1;
+      display:grid;
+      place-items:center;
+      padding: 24px;
+    }
+    .wrap{
+      width:min(1040px, 100%);
+      grid-template-columns: 1.1fr .9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    /* Left panel (marketing) */
+    .promo{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height: 520px;
+    }
+    .promo h1{
+      margin:0 0 10px 0;
+      font-size:36px;
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .promo p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      max-width: 46ch;
+    }
+    .bullets{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+      color:var(--text);
+      font-size:14px;
+    }
+    .bullet{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#10b981;
+      margin-top:4px;
+      flex:0 0 auto;
+    }
+    .fineprint{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+      margin-top:18px;
+    }
+
+    /* Right panel (form) */
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background:var(--card);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      min-height: 520px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .card h2{
+      margin:0 0 6px 0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .sub{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:14px;
+    }
+    label{
+      font-size:13px;
+      color:#374151;
+      font-weight:600;
+    }
+    input{
+      height:44px;
+      padding: 0 12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      outline:none;
+      font-size:14px;
+      background:#fff;
+    }
+    input:focus{
+      border-color:#9ca3af;
+      box-shadow: 0 0 0 4px rgba(17,24,39,.08);
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin: 6px 0 14px 0;
+    }
+    .check{
+      display:flex; align-items:center; gap:10px;
+      color:var(--muted);
+      font-size:13px;
+      user-select:none;
+    }
+    .check input{height:16px;width:16px}
+    .link{
+      color:#2563eb;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:600;
+    }
+    .link:hover{text-decoration:underline}
+
+    .btn{
+      height:46px;
+      border-radius:12px;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:700;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:var(--primary);
+      color:var(--primaryText);
+    }
+    .btn-primary:hover{opacity:.92}
+    .btn-secondary{
+      background:#fff;
+      border-color:var(--border);
+      color:var(--text);
+      margin-top:10px;
+    }
+    .btn-secondary:hover{background:#f9fafb}
+
+    .divider{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:18px 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .divider::before, .divider::after{
+      content:"";
+      height:1px;
+      background:var(--border);
+      flex:1;
+    }
+
+    .social{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .btn-social{
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn-social:hover{background:#f9fafb}
+
+    footer{
+      padding: 14px 24px 22px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .wrap{grid-template-columns:1fr}
+      .promo{min-height:auto}
+      .card{min-height:auto}
+    }
+      /* HERO BANNER */
+.hero {
+  height: 400px;
+  background: linear-gradient(to right, #1f4037, #99f2c8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+  </style>
 </head>
-<body style="text-align:center; padding:100px; font-family:Arial;">
-    <h2>Login Form</h2>
-    <form action="/authenticate" method="POST">
-        <input type="text" name="username" placeholder="Username" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
+
+<body>
+  <header>
+  </header>
+  <div class="hero">
+    <h1> Login Page </h1>
+</div>
+  <main>
+
+    <div class="wrap">
+      <!-- Right: login form -->
+      <section class="card" aria-label="Sign in form">
+        <h2>Sign in</h2>
+        <p class="sub">Welcome back. Please enter your details.</p>
+
+        <!-- For Flask, set action="/authenticate" method="POST" -->
+        <form action="/authenticate" method="POST" autocomplete="on">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="username" type="email" placeholder="name@company.com" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="••••••••" minlength="4" required />
+          </div>
+
+          <div class="row">
+            <label class="check">
+              <input type="checkbox" name="remember" />
+              Remember me
+            </label>
+            <a class="link" href="#">Forgot password?</a>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <button class="btn btn-secondary" type="button" onclick="window.location.href='/create-account'">
+            Create account
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
